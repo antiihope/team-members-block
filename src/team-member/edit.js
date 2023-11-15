@@ -8,7 +8,7 @@ import { Spinner, withNotices } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 // https://source.unsplash.com/550x550/?portrait
 function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
-	const { name, bio, url, alt } = attributes;
+	const { name, bio, url, alt, id } = attributes;
 	const [ blobURL, setBlobURL ] = useState( '' );
 	const onChangeName = ( name ) => {
 		setAttributes( { name } );
