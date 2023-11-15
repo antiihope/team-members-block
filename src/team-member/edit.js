@@ -4,6 +4,7 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	InspectorControls,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
 import {
@@ -14,11 +15,43 @@ import {
 	TextareaControl,
 	SelectControl,
 } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 // https://source.unsplash.com/550x550/?portrait
 function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 	const { name, bio, url, alt, id } = attributes;
 	const [ blobURL, setBlobURL ] = useState( '' );
+
+	const imageObject = useSelect(
+		( select ) => {
+			return id ? select( 'core' ).getMedia( id ) : null;
+		},
+		[ id ]
+	);
+	const imageSizes = useSelect( ( select ) => {
+		return select( blockEditorStore ).getSettings().imageSizes;
+	}, [] );
+
+	const getImageSizeOptions = () => {
+		if ( ! imageSizes ) return [];
+		const options = [];
+		const sizes = imageObject?.media_details?.sizes;
+		for ( const key in sizes ) {
+			const size = sizes[ key ];
+			const imageSize = imageSizes.find( ( item ) => item.slug === key );
+			if ( ! imageSize ) {
+				continue;
+			}
+			options.push( {
+				label: imageSize.name,
+				value: size.source_url,
+				// width: size.width,
+				// height: size.height,
+			} );
+		}
+		return options;
+	};
+
 	const onChangeName = ( name ) => {
 		setAttributes( { name } );
 	};
@@ -42,6 +75,9 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 			url,
 			alt: undefined,
 		} );
+	};
+	const onChangeImageSize = ( url ) => {
+		setAttributes( { url } );
 	};
 	const onUploadError = ( message ) => {
 		noticeOperations.removeAllNotices();
@@ -75,22 +111,9 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 					{ id && (
 						<SelectControl
 							label="Image Size"
-							options={ [
-								{
-									label: 'Small',
-									value: 'small',
-								},
-								{
-									label: 'Medium',
-									value: 'medium',
-								},
-								{
-									label: 'Large',
-									value: 'large',
-								},
-							] }
-							// value={ attributes.size }
-							onChange={  }
+							options={ getImageSizeOptions() }
+							value={ url }
+							onChange={ onChangeImageSize }
 						/>
 					) }
 					{ url && ! isBlobURL( url ) && (
