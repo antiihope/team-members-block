@@ -2,9 +2,18 @@ import {
 	useBlockProps,
 	RichText,
 	MediaPlaceholder,
+	BlockControls,
+	InspectorControls,
 } from '@wordpress/block-editor';
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
-import { Spinner, withNotices } from '@wordpress/components';
+import {
+	Spinner,
+	withNotices,
+	ToolbarButton,
+	PanelBody,
+	TextareaControl,
+	SelectControl,
+} from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 // https://source.unsplash.com/550x550/?portrait
 function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
@@ -38,6 +47,12 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 		noticeOperations.removeAllNotices();
 		noticeOperations.createErrorNotice( message );
 	};
+	const removeImage = () => {
+		setAttributes( { url: undefined, id: undefined, alt: undefined } );
+	};
+	const onChangeAlt = ( alt ) => {
+		setAttributes( { alt } );
+	};
 
 	useEffect( () => {
 		if ( ! id && isBlobURL( url ) ) {
@@ -54,42 +69,84 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 		}
 	}, [ url ] );
 	return (
-		<div { ...useBlockProps() }>
+		<>
+			<InspectorControls>
+				<PanelBody title="Image Settings">
+					{ id && (
+						<SelectControl
+							label="Image Size"
+							options={ [
+								{
+									label: 'Small',
+									value: 'small',
+								},
+								{
+									label: 'Medium',
+									value: 'medium',
+								},
+								{
+									label: 'Large',
+									value: 'large',
+								},
+							] }
+							// value={ attributes.size }
+							onChange={  }
+						/>
+					) }
+					{ url && ! isBlobURL( url ) && (
+						<TextareaControl
+							label="Alt Text (Alternative Text)"
+							value={ alt }
+							onChange={ onChangeAlt }
+						/>
+					) }
+				</PanelBody>
+			</InspectorControls>
 			{ url && (
-				<div
-					className={ `wp-block-block-course-team-member-img${
-						isBlobURL( url ) ? ' is-loading' : ''
-					}` }
-				>
-					<img src={ url } alt={ alt } />{ ' ' }
-					{ isBlobURL( url ) && <Spinner /> }
-				</div>
+				<BlockControls group="inline">
+					<ToolbarButton onClick={ removeImage }>
+						Remove Image
+					</ToolbarButton>
+				</BlockControls>
 			) }
-			<MediaPlaceholder
-				icon="admin-users"
-				onSelect={ onSelectImage }
-				onSelectURL={ onSelectUrl }
-				onError={ onUploadError }
-				accept="image/*"
-				allowedTypes={ [ 'image' ] }
-				disableMediaButtons={ url }
-				notices={ noticeUI }
-			/>
-			<RichText
-				placeholder="Name"
-				tagName="h3"
-				onChange={ onChangeName }
-				value={ name }
-				allowedFormats={ [] }
-			/>
-			<RichText
-				placeholder="Bio"
-				tagName="p"
-				onChange={ onChangeBio }
-				value={ bio }
-				allowedFormats={ [] }
-			/>
-		</div>
+
+			<div { ...useBlockProps() }>
+				{ url && (
+					<div
+						className={ `wp-block-block-course-team-member-img${
+							isBlobURL( url ) ? ' is-loading' : ''
+						}` }
+					>
+						<img src={ url } alt={ alt } />{ ' ' }
+						{ isBlobURL( url ) && <Spinner /> }
+					</div>
+				) }
+				<MediaPlaceholder
+					icon="admin-users"
+					onSelect={ onSelectImage }
+					onSelectURL={ onSelectUrl }
+					onError={ onUploadError }
+					accept="image/*"
+					allowedTypes={ [ 'image' ] }
+					disableMediaButtons={ url }
+					notices={ noticeUI }
+				/>
+				<RichText
+					placeholder="Name"
+					tagName="h3"
+					onChange={ onChangeName }
+					value={ name }
+					allowedFormats={ [] }
+				/>
+				<RichText
+					placeholder="Bio"
+					tagName="p"
+					onChange={ onChangeBio }
+					value={ bio }
+					allowedFormats={ [] }
+				/>
+			</div>
+		</>
 	);
 }
 

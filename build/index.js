@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/edit.js":
@@ -8,6 +7,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Edit)
@@ -61,6 +61,7 @@ function Edit({
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
@@ -86,6 +87,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
@@ -113,121 +115,9 @@ function save({
 /*!*********************************!*\
   !*** ./src/team-member/edit.js ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blob */ "@wordpress/blob");
-/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-
-// https://source.unsplash.com/550x550/?portrait
-function Edit({
-  attributes,
-  setAttributes,
-  noticeOperations,
-  noticeUI
-}) {
-  const {
-    name,
-    bio,
-    url,
-    alt,
-    id
-  } = attributes;
-  const [blobURL, setBlobURL] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const onChangeName = name => {
-    setAttributes({
-      name
-    });
-  };
-  const onChangeBio = bio => {
-    setAttributes({
-      bio
-    });
-  };
-  const onSelectImage = media => {
-    if (!media || !media.url) {
-      setAttributes({
-        url: undefined,
-        id: undefined,
-        alt: undefined
-      });
-      return;
-    }
-    setAttributes({
-      id: media.id,
-      url: media.url,
-      alt: media.alt
-    });
-  };
-  const onSelectUrl = url => {
-    setAttributes({
-      id: undefined,
-      url,
-      alt: undefined
-    });
-  };
-  const onUploadError = message => {
-    noticeOperations.removeAllNotices();
-    noticeOperations.createErrorNotice(message);
-  };
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!id && (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url)) {
-      setAttributes({
-        url: undefined,
-        alt: undefined
-      });
-    }
-  }, []);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if ((0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url)) {
-      setBlobURL(url);
-    } else {
-      (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.revokeBlobURL)(blobURL);
-      setBlobURL('');
-    }
-  }, [url]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(), url && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `wp-block-block-course-team-member-img${(0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url) ? ' is-loading' : ''}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: url,
-    alt: alt
-  }), ' ', (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Spinner, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaPlaceholder, {
-    icon: "admin-users",
-    onSelect: onSelectImage,
-    onSelectURL: onSelectUrl,
-    onError: onUploadError,
-    accept: "image/*",
-    allowedTypes: ['image'],
-    disableMediaButtons: url,
-    notices: noticeUI
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    placeholder: "Name",
-    tagName: "h3",
-    onChange: onChangeName,
-    value: name,
-    allowedFormats: []
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    placeholder: "Bio",
-    tagName: "p",
-    onChange: onChangeBio,
-    value: bio,
-    allowedFormats: []
-  }));
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.withNotices)(Edit));
+throw new Error("Module build failed (from ./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\src\\team-member\\edit.js: JSX attributes must only be assigned a non-empty expression. (93:16)\n\n\u001b[0m \u001b[90m 91 |\u001b[39m \t\t\t\t\t\t\t] }\u001b[0m\n\u001b[0m \u001b[90m 92 |\u001b[39m \t\t\t\t\t\t\t\u001b[90m// value={ attributes.size }\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 93 |\u001b[39m \t\t\t\t\t\t\tonChange\u001b[33m=\u001b[39m{  }\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \t\t\t\t\t\t\t         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 |\u001b[39m \t\t\t\t\t\t\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 95 |\u001b[39m \t\t\t\t\t) }\u001b[0m\n\u001b[0m \u001b[90m 96 |\u001b[39m \t\t\t\t\t{ url \u001b[33m&&\u001b[39m \u001b[33m!\u001b[39m isBlobURL( url ) \u001b[33m&&\u001b[39m (\u001b[0m\n    at constructor (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:356:19)\n    at JSXParserMixin.raise (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:3223:19)\n    at JSXParserMixin.jsxParseAttributeValue (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6762:16)\n    at JSXParserMixin.jsxParseAttribute (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6813:38)\n    at JSXParserMixin.jsxParseOpeningElementAfterName (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6827:28)\n    at JSXParserMixin.jsxParseOpeningElementAt (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6822:17)\n    at JSXParserMixin.jsxParseElementAt (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6846:33)\n    at JSXParserMixin.jsxParseElement (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6915:17)\n    at JSXParserMixin.parseExprAtom (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6927:19)\n    at JSXParserMixin.parseExprSubscripts (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10857:23)\n    at JSXParserMixin.parseUpdate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10840:21)\n    at JSXParserMixin.parseMaybeUnary (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10816:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10654:61)\n    at JSXParserMixin.parseExprOps (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10659:23)\n    at JSXParserMixin.parseMaybeConditional (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10636:23)\n    at JSXParserMixin.parseMaybeAssign (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10597:21)\n    at C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10567:39\n    at JSXParserMixin.allowInAnd (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:12284:12)\n    at JSXParserMixin.parseMaybeAssignAllowIn (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10567:17)\n    at JSXParserMixin.parseParenAndDistinguishExpression (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:11499:28)\n    at JSXParserMixin.parseExprAtom (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:11137:23)\n    at JSXParserMixin.parseExprAtom (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6932:20)\n    at JSXParserMixin.parseExprSubscripts (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10857:23)\n    at JSXParserMixin.parseUpdate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10840:21)\n    at JSXParserMixin.parseMaybeUnary (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10816:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10654:61)\n    at JSXParserMixin.parseExprOpBaseRightExpr (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10747:34)\n    at JSXParserMixin.parseExprOpRightExpr (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10742:21)\n    at JSXParserMixin.parseExprOp (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10705:27)\n    at JSXParserMixin.parseExprOps (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10663:17)\n    at JSXParserMixin.parseMaybeConditional (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10636:23)\n    at JSXParserMixin.parseMaybeAssign (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10597:21)\n    at JSXParserMixin.parseExpressionBase (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10551:23)\n    at C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10547:39\n    at JSXParserMixin.allowInAnd (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:12284:12)\n    at JSXParserMixin.parseExpression (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10547:17)\n    at JSXParserMixin.jsxParseExpressionContainer (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6792:31)\n    at JSXParserMixin.jsxParseElementAt (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6871:36)\n    at JSXParserMixin.jsxParseElementAt (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6858:32)\n    at JSXParserMixin.jsxParseElementAt (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6858:32)\n    at JSXParserMixin.jsxParseElement (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6915:17)\n    at JSXParserMixin.parseExprAtom (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:6927:19)\n    at JSXParserMixin.parseExprSubscripts (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10857:23)\n    at JSXParserMixin.parseUpdate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10840:21)\n    at JSXParserMixin.parseMaybeUnary (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10816:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10654:61)\n    at JSXParserMixin.parseExprOps (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10659:23)\n    at JSXParserMixin.parseMaybeConditional (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10636:23)\n    at JSXParserMixin.parseMaybeAssign (C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10597:21)\n    at C:\\Users\\Hazim-PC\\Local Sites\\tempheir\\app\\public\\wp-content\\plugins\\team-members-block\\node_modules\\.pnpm\\@babel+parser@7.23.3\\node_modules\\@babel\\parser\\lib\\index.js:10567:39");
 
 /***/ }),
 
@@ -237,6 +127,7 @@ function Edit({
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
@@ -297,6 +188,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Save)
@@ -322,7 +214,7 @@ function Save({
     alt: alt,
     className: id ? `wp-image-${id}` : null
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h4",
+    tagName: "h3",
     value: name
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
@@ -338,6 +230,7 @@ function Save({
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -350,19 +243,10 @@ __webpack_require__.r(__webpack_exports__);
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ }),
-
-/***/ "@wordpress/blob":
-/*!******************************!*\
-  !*** external ["wp","blob"] ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["blob"];
 
 /***/ }),
 
@@ -372,6 +256,7 @@ module.exports = window["wp"]["blob"];
   \*************************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
@@ -382,6 +267,7 @@ module.exports = window["wp"]["blockEditor"];
   \********************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["blocks"];
 
 /***/ }),
@@ -392,6 +278,7 @@ module.exports = window["wp"]["blocks"];
   \************************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["components"];
 
 /***/ }),
@@ -402,6 +289,7 @@ module.exports = window["wp"]["components"];
   \*********************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["element"];
 
 /***/ }),
@@ -412,6 +300,7 @@ module.exports = window["wp"]["element"];
   \******************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["i18n"];
 
 /***/ })

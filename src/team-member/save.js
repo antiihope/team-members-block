@@ -11,7 +11,7 @@ export default function Save( { attributes } ) {
 					className={ id ? `wp-image-${ id }` : null }
 				/>
 			) }
-			<RichText.Content tagName="h4" value={ name } />
+			<RichText.Content tagName="h3" value={ name } />
 			<RichText.Content tagName="p" value={ bio } />
 		</div>
 	);
