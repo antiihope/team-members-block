@@ -29,6 +29,7 @@ function Edit( {
 } ) {
 	const { name, bio, url, alt, id, socialLinks } = attributes;
 	const [ blobURL, setBlobURL ] = useState( '' );
+	const [ selectedLink, setSelectedLink ] = useState( '' );
 	const titleRef = useRef();
 
 	const imageObject = useSelect(
@@ -88,13 +89,27 @@ function Edit( {
 	const onChangeImageSize = ( url ) => {
 		setAttributes( { url } );
 	};
+
 	const onUploadError = ( message ) => {
 		noticeOperations.removeAllNotices();
 		noticeOperations.createErrorNotice( message );
 	};
+
 	const removeImage = () => {
 		setAttributes( { url: undefined, id: undefined, alt: undefined } );
 	};
+
+	const addNewSocialLink = () => {
+		const newSocialLinks = [ ...socialLinks ];
+		newSocialLinks.push( {
+			icon: 'wordpress',
+			link: '#',
+		} );
+
+		setAttributes( { socialLinks: newSocialLinks } );
+		setSelectedLink( socialLinks.length );
+	};
+
 	const onChangeAlt = ( alt ) => {
 		setAttributes( { alt } );
 	};
@@ -117,6 +132,11 @@ function Edit( {
 	useEffect( () => {
 		titleRef.current.focus();
 	}, [ url ] );
+	useEffect( () => {
+		if ( ! isSelected ) {
+			setSelectedLink( '' );
+		}
+	}, [ isSelected ] );
 	return (
 		<>
 			<InspectorControls>
@@ -186,15 +206,31 @@ function Edit( {
 					<ul>
 						{ socialLinks.map( ( item, index ) => {
 							return (
-								<li key={ index }>
-									<Icon icon={ item.icon } />
+								<li
+									key={ index }
+									className={
+										selectedLink === index
+											? 'is-selected'
+											: null
+									}
+								>
+									<button
+										onClick={ () =>
+											setSelectedLink( index )
+										}
+									>
+										<Icon icon={ item.icon } />
+									</button>
 								</li>
 							);
 						} ) }
 						{ isSelected && (
 							<li className="wp-block-block-course-team-member-add-icon-li">
 								<Tooltip text="Add Social Link">
-									<button aria-label="Add Social link button">
+									<button
+										onClick={ addNewSocialLink }
+										aria-label="Add Social link button"
+									>
 										<Icon icon="plus" />
 									</button>
 								</Tooltip>
