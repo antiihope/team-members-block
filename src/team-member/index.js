@@ -58,6 +58,19 @@ registerBlockType( 'block-course/team-member', {
 					link: '#',
 				},
 			],
+			source: 'query',
+			selector: '.wp-block-block-course-team-member-social-links ul li',
+			query: {
+				icon: {
+					source: 'attribute',
+					attribute: 'data-icon',
+				},
+				link: {
+					source: 'attribute',
+					selector: 'a',
+					attribute: 'href',
+				},
+			},
 		},
 	},
 	edit: Edit,

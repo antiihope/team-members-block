@@ -16,6 +16,8 @@ import {
 	SelectControl,
 	Icon,
 	Tooltip,
+	TextControl,
+	Button,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useEffect, useState, useRef } from '@wordpress/element';
@@ -207,6 +209,7 @@ function Edit( {
 						{ socialLinks.map( ( item, index ) => {
 							return (
 								<li
+									data-icon={ item.icon }
 									key={ index }
 									className={
 										selectedLink === index
@@ -238,6 +241,14 @@ function Edit( {
 						) }
 					</ul>
 				</div>
+				{ selectedLink !== '' && (
+					<div className="wp-block-block-course-team-member-link-form">
+						<TextControl label="Icon" />
+						<TextControl label="URL" />
+						<br />
+						<Button isDestructive>Remove Link</Button>
+					</div>
+				) }
 			</div>
 		</>
 	);
