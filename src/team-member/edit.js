@@ -14,13 +14,22 @@ import {
 	PanelBody,
 	TextareaControl,
 	SelectControl,
+	Icon,
+	Tooltip,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 // https://source.unsplash.com/550x550/?portrait
-function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
-	const { name, bio, url, alt, id } = attributes;
+function Edit( {
+	attributes,
+	setAttributes,
+	noticeOperations,
+	noticeUI,
+	isSelected,
+} ) {
+	const { name, bio, url, alt, id, socialLinks } = attributes;
 	const [ blobURL, setBlobURL ] = useState( '' );
+	const titleRef = useRef();
 
 	const imageObject = useSelect(
 		( select ) => {
@@ -104,6 +113,10 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 			setBlobURL( '' );
 		}
 	}, [ url ] );
+
+	useEffect( () => {
+		titleRef.current.focus();
+	}, [ url ] );
 	return (
 		<>
 			<InspectorControls>
@@ -160,6 +173,7 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 					onChange={ onChangeName }
 					value={ name }
 					allowedFormats={ [] }
+					ref={ titleRef }
 				/>
 				<RichText
 					placeholder="Bio"
@@ -168,6 +182,26 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 					value={ bio }
 					allowedFormats={ [] }
 				/>
+				<div className="wp-block-block-course-team-member-social-links">
+					<ul>
+						{ socialLinks.map( ( item, index ) => {
+							return (
+								<li key={ index }>
+									<Icon icon={ item.icon } />
+								</li>
+							);
+						} ) }
+						{ isSelected && (
+							<li className="wp-block-block-course-team-member-add-icon-li">
+								<Tooltip text="Add Social Link">
+									<button aria-label="Add Social link button">
+										<Icon icon="plus" />
+									</button>
+								</Tooltip>
+							</li>
+						) }
+					</ul>
+				</div>
 			</div>
 		</>
 	);
