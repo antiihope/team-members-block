@@ -1,15 +1,27 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@babel/runtime':
+    specifier: ^7.23.2
+    version: 7.23.2
+  '@dnd-kit/core':
+    specifier: ^6.1.0
+    version: 6.1.0(react-dom@17.0.2)(react@18.2.0)
+  '@dnd-kit/sortable':
+    specifier: ^8.0.0
+    version: 8.0.0(@dnd-kit/core@6.1.0)(react@18.2.0)
+  '@dnd-kit/utilities':
+    specifier: ^3.2.2
+    version: 3.2.2(react@18.2.0)
   '@wordpress/block-editor':
     specifier: ^8.0.11
-    version: 8.0.11(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2)
+    version: 8.0.11(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0)
   '@wordpress/blocks':
     specifier: ^11.1.4
-    version: 11.1.4(react@17.0.2)
+    version: 11.1.4(react@18.2.0)
   '@wordpress/data':
     specifier: ^9.15.0
-    version: 9.15.0(react@17.0.2)
+    version: 9.15.0(react@18.2.0)
   '@wordpress/i18n':
     specifier: ^4.2.4
     version: 4.2.4
@@ -23,7 +35,7 @@ devDependencies:
     version: 1.1.1
   '@wordpress/scripts':
     specifier: ^19.2.2
-    version: 19.2.2(@babel/core@7.23.3)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
+    version: 19.2.2(@babel/core@7.23.3)(react-dom@17.0.2)(react@18.2.0)(typescript@5.2.2)
   '@wordpress/stylelint-config':
     specifier: ^19.1.0
     version: 19.1.0(stylelint@13.13.1)
@@ -1391,6 +1403,49 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
+  /@dnd-kit/accessibility@3.1.0(react@18.2.0):
+    resolution: {integrity: sha512-ea7IkhKvlJUv9iSHJOnxinBcoOI3ppGnnL+VDJ75O45Nss6HtZd8IdN8touXPDtASfeI2T2LImb8VOZcL47wjQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.2
+    dev: false
+
+  /@dnd-kit/core@6.1.0(react-dom@17.0.2)(react@18.2.0):
+    resolution: {integrity: sha512-J3cQBClB4TVxwGo3KEjssGEXNJqGVWx17aRTZ1ob0FliR5IjYgTxl5YJbKTzA6IzrtelotH19v6y7uoIRUZPSg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@dnd-kit/accessibility': 3.1.0(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
+      tslib: 2.6.2
+    dev: false
+
+  /@dnd-kit/sortable@8.0.0(@dnd-kit/core@6.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-U3jk5ebVXe1Lr7c2wU7SBZjcWdQP+j7peHJfCspnA81enlu88Mgd7CC8Q+pub9ubP7eKVETzJW+IBAhsqbSu/g==}
+    peerDependencies:
+      '@dnd-kit/core': ^6.1.0
+      react: '>=16.8.0'
+    dependencies:
+      '@dnd-kit/core': 6.1.0(react-dom@17.0.2)(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
+      react: 18.2.0
+      tslib: 2.6.2
+    dev: false
+
+  /@dnd-kit/utilities@3.2.2(react@18.2.0):
+    resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.2
+    dev: false
+
   /@emotion/babel-plugin@11.11.0:
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
     dependencies:
@@ -1454,7 +1509,7 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.1(react@17.0.2):
+  /@emotion/react@11.11.1(react@18.2.0):
     resolution: {integrity: sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==}
     peerDependencies:
       '@types/react': '*'
@@ -1467,11 +1522,11 @@ packages:
       '@emotion/babel-plugin': 11.11.0
       '@emotion/cache': 11.11.0
       '@emotion/serialize': 1.1.2
-      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
       hoist-non-react-statics: 3.3.2
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /@emotion/serialize@1.1.2:
@@ -1488,7 +1543,7 @@ packages:
     resolution: {integrity: sha512-0QBtGvaqtWi+nx6doRwDdBIzhNdZrXUppvTM4dtZZWEGTXL/XE/yJxLMGlDT1Gt+UHH5IX1n+jkXyytE/av7OA==}
     dev: false
 
-  /@emotion/styled@11.11.0(@emotion/react@11.11.1)(react@17.0.2):
+  /@emotion/styled@11.11.0(@emotion/react@11.11.1)(react@18.2.0):
     resolution: {integrity: sha512-hM5Nnvu9P3midq5aaXj4I+lnSfNi7Pmd4EWk1fOZ3pxookaQTNew6bp4JaCBYM4HVFZF9g7UjJmsUmC2JlxOng==}
     peerDependencies:
       '@emotion/react': ^11.0.0-rc.0
@@ -1501,23 +1556,23 @@ packages:
       '@babel/runtime': 7.23.2
       '@emotion/babel-plugin': 11.11.0
       '@emotion/is-prop-valid': 1.2.1
-      '@emotion/react': 11.11.1(react@17.0.2)
+      '@emotion/react': 11.11.1(react@18.2.0)
       '@emotion/serialize': 1.1.2
-      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /@emotion/unitless@0.8.1:
     resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
     dev: false
 
-  /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@17.0.2):
+  /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-jT/qyKZ9rzLErtrjGgdkMBn2OP8wl0G3sQlBb3YPryvKHsjvINUhVaPFfP+fpBcOkmrVOVEEHQFJ7nbj2TH2gw==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /@emotion/utils@1.0.0:
@@ -1568,16 +1623,16 @@ packages:
       '@floating-ui/core': 0.6.2
     dev: false
 
-  /@floating-ui/react-dom@0.6.3(react-dom@17.0.2)(react@17.0.2):
+  /@floating-ui/react-dom@0.6.3(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-hC+pS5D6AgS2wWjbmSQ6UR6Kpy+drvWGJIri6e1EDGADTPsCaa4KzCgmCczHrQeInx9tqs81EyDmbKJYY2swKg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@floating-ui/dom': 0.4.5
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      use-isomorphic-layout-effect: 1.1.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
+      use-isomorphic-layout-effect: 1.1.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -1929,52 +1984,52 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@react-spring/animated@9.7.3(react@17.0.2):
+  /@react-spring/animated@9.7.3(react@18.2.0):
     resolution: {integrity: sha512-5CWeNJt9pNgyvuSzQH+uy2pvTg8Y4/OisoscZIR8/ZNLIOI+CatFBhGZpDGTF/OzdNFsAoGk3wiUYTwoJ0YIvw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@react-spring/shared': 9.7.3(react@17.0.2)
+      '@react-spring/shared': 9.7.3(react@18.2.0)
       '@react-spring/types': 9.7.3
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
-  /@react-spring/core@9.7.3(react@17.0.2):
+  /@react-spring/core@9.7.3(react@18.2.0):
     resolution: {integrity: sha512-IqFdPVf3ZOC1Cx7+M0cXf4odNLxDC+n7IN3MDcVCTIOSBfqEcBebSv+vlY5AhM0zw05PDbjKrNmBpzv/AqpjnQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@react-spring/animated': 9.7.3(react@17.0.2)
-      '@react-spring/shared': 9.7.3(react@17.0.2)
+      '@react-spring/animated': 9.7.3(react@18.2.0)
+      '@react-spring/shared': 9.7.3(react@18.2.0)
       '@react-spring/types': 9.7.3
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
-  /@react-spring/shared@9.7.3(react@17.0.2):
+  /@react-spring/shared@9.7.3(react@18.2.0):
     resolution: {integrity: sha512-NEopD+9S5xYyQ0pGtioacLhL2luflh6HACSSDUZOwLHoxA5eku1UPuqcJqjwSD6luKjjLfiLOspxo43FUHKKSA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@react-spring/types': 9.7.3
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /@react-spring/types@9.7.3:
     resolution: {integrity: sha512-Kpx/fQ/ZFX31OtlqVEFfgaD1ACzul4NksrvIgYfIFq9JpDHFwQkMVZ10tbo0FU/grje4rcL4EIrjekl3kYwgWw==}
     dev: false
 
-  /@react-spring/web@9.7.3(react-dom@17.0.2)(react@17.0.2):
+  /@react-spring/web@9.7.3(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-BXt6BpS9aJL/QdVqEIX9YoUy8CE6TJrU0mNCqSoxdXlIeNcEBWOfIyE6B14ENNsyQKS3wOWkiJfco0tCr/9tUg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@react-spring/animated': 9.7.3(react@17.0.2)
-      '@react-spring/core': 9.7.3(react@17.0.2)
-      '@react-spring/shared': 9.7.3(react@17.0.2)
+      '@react-spring/animated': 9.7.3(react@18.2.0)
+      '@react-spring/core': 9.7.3(react@18.2.0)
+      '@react-spring/shared': 9.7.3(react@18.2.0)
       '@react-spring/types': 9.7.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
   /@sideway/address@4.1.4:
@@ -2502,13 +2557,13 @@ packages:
     resolution: {integrity: sha512-rh+6MND31zfHcy9VU3dOZCqGY511lvGcfyJenN4cWZe0u1BH6brBpBddLVXhF2r4BMqWbvxfsbL7D287thJU2A==}
     dev: false
 
-  /@use-gesture/react@10.3.0(react@17.0.2):
+  /@use-gesture/react@10.3.0(react@18.2.0):
     resolution: {integrity: sha512-3zc+Ve99z4usVP6l9knYVbVnZgfqhKah7sIG+PS2w+vpig2v2OLct05vs+ZXMzwxdNCMka8B+8WlOo0z6Pn6DA==}
     peerDependencies:
       react: '>= 16.8.0'
     dependencies:
       '@use-gesture/core': 10.3.0
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /@webassemblyjs/ast@1.11.6:
@@ -2648,25 +2703,25 @@ packages:
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.10.0)(webpack@5.89.0)
     dev: true
 
-  /@wojtekmaj/enzyme-adapter-react-17@0.6.7(enzyme@3.11.0)(react-dom@17.0.2)(react@17.0.2):
+  /@wojtekmaj/enzyme-adapter-react-17@0.6.7(enzyme@3.11.0)(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-B+byiwi/T1bx5hcj9wc0fUL5Hlb5giSXJzcnEfJVl2j6dGV2NJfcxDBYX0WWwIxlzNiFz8kAvlkFWI2y/nscZQ==}
     peerDependencies:
       enzyme: ^3.0.0
       react: ^17.0.0-0
       react-dom: ^17.0.0-0
     dependencies:
-      '@wojtekmaj/enzyme-adapter-utils': 0.1.4(react@17.0.2)
+      '@wojtekmaj/enzyme-adapter-utils': 0.1.4(react@18.2.0)
       enzyme: 3.11.0
       enzyme-shallow-equal: 1.0.5
       has: 1.0.4
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
       react-is: 17.0.2
-      react-test-renderer: 17.0.2(react@17.0.2)
+      react-test-renderer: 17.0.2(react@18.2.0)
     dev: true
 
-  /@wojtekmaj/enzyme-adapter-utils@0.1.4(react@17.0.2):
+  /@wojtekmaj/enzyme-adapter-utils@0.1.4(react@18.2.0):
     resolution: {integrity: sha512-ARGIQSIIv3oBia1m5Ihn1VU0FGmft6KPe39SBKTb8p7LSXO23YI4kNtc4M/cKoIY7P+IYdrZcgMObvedyjoSQA==}
     peerDependencies:
       react: ^17.0.0-0
@@ -2675,7 +2730,7 @@ packages:
       has: 1.0.4
       object.fromentries: 2.0.7
       prop-types: 15.8.1
-      react: 17.0.2
+      react: 18.2.0
     dev: true
 
   /@wordpress/a11y@3.45.0:
@@ -2743,20 +2798,20 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
-  /@wordpress/block-editor@8.0.11(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2):
+  /@wordpress/block-editor@8.0.11(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0):
     resolution: {integrity: sha512-U70TL7m/TQNGw6gKMe+gzAh3bzziCW5JcFrF8hv42c4uZk1BL8P4WGHpP5WNvr5Ae529VpN+rSaDmqE7pY4IyQ==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/runtime': 7.23.2
-      '@react-spring/web': 9.7.3(react-dom@17.0.2)(react@17.0.2)
+      '@react-spring/web': 9.7.3(react-dom@17.0.2)(react@18.2.0)
       '@wordpress/a11y': 3.45.0
       '@wordpress/api-fetch': 5.2.7
       '@wordpress/blob': 3.45.0
       '@wordpress/block-serialization-default-parser': 4.45.0
-      '@wordpress/blocks': 11.1.4(react@17.0.2)
-      '@wordpress/components': 19.17.0(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2)
-      '@wordpress/compose': 5.20.0(react@17.0.2)
-      '@wordpress/data': 6.15.0(react@17.0.2)
+      '@wordpress/blocks': 11.1.4(react@18.2.0)
+      '@wordpress/components': 19.17.0(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
+      '@wordpress/data': 6.15.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/dom': 3.45.0
       '@wordpress/element': 4.20.0
@@ -2765,10 +2820,10 @@ packages:
       '@wordpress/i18n': 4.2.4
       '@wordpress/icons': 6.3.0
       '@wordpress/is-shallow-equal': 4.45.0
-      '@wordpress/keyboard-shortcuts': 3.20.0(react@17.0.2)
+      '@wordpress/keyboard-shortcuts': 3.20.0(react@18.2.0)
       '@wordpress/keycodes': 3.45.0
-      '@wordpress/notices': 3.31.0(react@17.0.2)
-      '@wordpress/rich-text': 5.20.0(react@17.0.2)
+      '@wordpress/notices': 3.31.0(react@18.2.0)
+      '@wordpress/rich-text': 5.20.0(react@18.2.0)
       '@wordpress/shortcode': 3.45.0
       '@wordpress/token-list': 2.45.0
       '@wordpress/url': 3.46.0
@@ -2782,8 +2837,8 @@ packages:
       inherits: 2.0.4
       lodash: 4.17.21
       memize: 1.1.0
-      react-autosize-textarea: 7.1.0(react-dom@17.0.2)(react@17.0.2)
-      react-easy-crop: 3.5.3(react-dom@17.0.2)(react@17.0.2)
+      react-autosize-textarea: 7.1.0(react-dom@17.0.2)(react@18.2.0)
+      react-easy-crop: 3.5.3(react-dom@17.0.2)(react@18.2.0)
       redux-multi: 0.1.12
       rememo: 3.0.0
       traverse: 0.6.7
@@ -2801,7 +2856,7 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
-  /@wordpress/blocks@11.1.4(react@17.0.2):
+  /@wordpress/blocks@11.1.4(react@18.2.0):
     resolution: {integrity: sha512-iTmkALp7diiP83ICsqQmtCvekOVEa1GCgbybfMS+eniVSXmMIgfZB69eYvf22XqQa68r9nCTIYuP2maPwPid3A==}
     engines: {node: '>=12'}
     dependencies:
@@ -2809,8 +2864,8 @@ packages:
       '@wordpress/autop': 3.45.0
       '@wordpress/blob': 3.45.0
       '@wordpress/block-serialization-default-parser': 4.45.0
-      '@wordpress/compose': 5.20.0(react@17.0.2)
-      '@wordpress/data': 6.15.0(react@17.0.2)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
+      '@wordpress/data': 6.15.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/dom': 3.45.0
       '@wordpress/element': 4.20.0
@@ -2835,7 +2890,7 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /@wordpress/components@19.17.0(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2):
+  /@wordpress/components@19.17.0(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0):
     resolution: {integrity: sha512-6FsLq1WS924fjZjRGSuen3Tzaa4mEWRtCTHM2JS5eE5+rnuhddiHNNgvw26IZCwhQYQwIvIKq9m9in0F0fSOzg==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -2845,14 +2900,14 @@ packages:
       '@babel/runtime': 7.23.2
       '@emotion/cache': 11.11.0
       '@emotion/css': 11.11.2
-      '@emotion/react': 11.11.1(react@17.0.2)
+      '@emotion/react': 11.11.1(react@18.2.0)
       '@emotion/serialize': 1.1.2
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(react@17.0.2)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(react@18.2.0)
       '@emotion/utils': 1.0.0
-      '@floating-ui/react-dom': 0.6.3(react-dom@17.0.2)(react@17.0.2)
-      '@use-gesture/react': 10.3.0(react@17.0.2)
+      '@floating-ui/react-dom': 0.6.3(react-dom@17.0.2)(react@18.2.0)
+      '@use-gesture/react': 10.3.0(react@18.2.0)
       '@wordpress/a11y': 3.45.0
-      '@wordpress/compose': 5.20.0(react@17.0.2)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
       '@wordpress/date': 4.45.0
       '@wordpress/deprecated': 3.45.0
       '@wordpress/dom': 3.45.0
@@ -2864,24 +2919,24 @@ packages:
       '@wordpress/is-shallow-equal': 4.45.0
       '@wordpress/keycodes': 3.45.0
       '@wordpress/primitives': 3.43.0
-      '@wordpress/rich-text': 5.20.0(react@17.0.2)
+      '@wordpress/rich-text': 5.20.0(react@18.2.0)
       '@wordpress/warning': 2.45.0
       classnames: 2.3.2
       colord: 2.9.3
       dom-scroll-into-view: 1.2.1
-      downshift: 6.1.12(react@17.0.2)
-      framer-motion: 6.5.1(react-dom@17.0.2)(react@17.0.2)
+      downshift: 6.1.12(react@18.2.0)
+      framer-motion: 6.5.1(react-dom@17.0.2)(react@18.2.0)
       gradient-parser: 0.1.5
       highlight-words-core: 1.2.2
       lodash: 4.17.21
       memize: 1.1.0
       moment: 2.29.4
-      re-resizable: 6.9.11(react-dom@17.0.2)(react@17.0.2)
-      react: 17.0.2
-      react-colorful: 5.6.1(react-dom@17.0.2)(react@17.0.2)
-      react-dates: 21.8.0(@babel/runtime@7.23.2)(moment@2.29.4)(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2)
-      react-dom: 17.0.2(react@17.0.2)
-      reakit: 1.3.11(react-dom@17.0.2)(react@17.0.2)
+      re-resizable: 6.9.11(react-dom@17.0.2)(react@18.2.0)
+      react: 18.2.0
+      react-colorful: 5.6.1(react-dom@17.0.2)(react@18.2.0)
+      react-dates: 21.8.0(@babel/runtime@7.23.2)(moment@2.29.4)(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0)
+      react-dom: 17.0.2(react@18.2.0)
+      reakit: 1.3.11(react-dom@17.0.2)(react@18.2.0)
       remove-accents: 0.4.4
       uuid: 8.3.2
     transitivePeerDependencies:
@@ -2889,7 +2944,7 @@ packages:
       - react-with-direction
     dev: false
 
-  /@wordpress/compose@5.20.0(react@17.0.2):
+  /@wordpress/compose@5.20.0(react@18.2.0):
     resolution: {integrity: sha512-IcmXeAIgZoJUFIO3bxBpPYfAre41H6zxQTC5N6nqhGqpISvbO1SsAIikd6B4AoSHUZmYV5UoTxk9kECqZZGVOw==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -2906,11 +2961,11 @@ packages:
       change-case: 4.1.2
       clipboard: 2.0.11
       mousetrap: 1.6.5
-      react: 17.0.2
-      use-memo-one: 1.1.3(react@17.0.2)
+      react: 18.2.0
+      use-memo-one: 1.1.3(react@18.2.0)
     dev: false
 
-  /@wordpress/compose@6.22.0(react@17.0.2):
+  /@wordpress/compose@6.22.0(react@18.2.0):
     resolution: {integrity: sha512-ZHJzNE4XzBD/8tPaYaCAiLBzLmxNfAjv5TQCARq+D1GDCcP+EEzfO3crNJIA6YeIXlGE7R9mWoW+L1eIsKJRjQ==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -2928,18 +2983,18 @@ packages:
       change-case: 4.1.2
       clipboard: 2.0.11
       mousetrap: 1.6.5
-      react: 17.0.2
-      use-memo-one: 1.1.3(react@17.0.2)
+      react: 18.2.0
+      use-memo-one: 1.1.3(react@18.2.0)
     dev: false
 
-  /@wordpress/data@6.15.0(react@17.0.2):
+  /@wordpress/data@6.15.0(react@18.2.0):
     resolution: {integrity: sha512-EReq6QQ3ASWPcB60q18GLfDBhQQrf2Ru9Vvkid/tk7tn4ttqy/axn09/ck/GQ1uwi9BoSRyydPOnQCsluPAgNA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^17.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@wordpress/compose': 5.20.0(react@17.0.2)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/element': 4.20.0
       '@wordpress/is-shallow-equal': 4.45.0
@@ -2949,20 +3004,20 @@ packages:
       is-plain-obj: 4.1.0
       is-promise: 4.0.0
       lodash: 4.17.21
-      react: 17.0.2
+      react: 18.2.0
       redux: 4.2.1
       turbo-combine-reducers: 1.0.2
-      use-memo-one: 1.1.3(react@17.0.2)
+      use-memo-one: 1.1.3(react@18.2.0)
     dev: false
 
-  /@wordpress/data@7.6.0(react@17.0.2):
+  /@wordpress/data@7.6.0(react@18.2.0):
     resolution: {integrity: sha512-Og+oinEpJzd2rI4cFQGJBtSNzSVEa1sDWje1dYc3Jm7t2/NpkGk/YXn0PlVhkakA7YCGBy2OhX122flgZBuaBw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^17.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@wordpress/compose': 5.20.0(react@17.0.2)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/element': 4.20.0
       '@wordpress/is-shallow-equal': 4.45.0
@@ -2972,20 +3027,20 @@ packages:
       is-plain-object: 5.0.0
       is-promise: 4.0.0
       lodash: 4.17.21
-      react: 17.0.2
+      react: 18.2.0
       redux: 4.2.1
       turbo-combine-reducers: 1.0.2
-      use-memo-one: 1.1.3(react@17.0.2)
+      use-memo-one: 1.1.3(react@18.2.0)
     dev: false
 
-  /@wordpress/data@9.15.0(react@17.0.2):
+  /@wordpress/data@9.15.0(react@18.2.0):
     resolution: {integrity: sha512-GWHH8DNFjv3zHo3CdjeltMZwv7tzOEwy09/bV7JrmXiD8/cBkcjN95oOblFmPxOgi9aeG/kF5A7Jv2TtFA+hEw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^18.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@wordpress/compose': 6.22.0(react@17.0.2)
+      '@wordpress/compose': 6.22.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/element': 5.22.0
       '@wordpress/is-shallow-equal': 4.45.0
@@ -2996,10 +3051,10 @@ packages:
       equivalent-key-map: 0.2.2
       is-plain-object: 5.0.0
       is-promise: 4.0.0
-      react: 17.0.2
+      react: 18.2.0
       redux: 4.2.1
       rememo: 4.0.2
-      use-memo-one: 1.1.3(react@17.0.2)
+      use-memo-one: 1.1.3(react@18.2.0)
     dev: false
 
   /@wordpress/date@4.45.0:
@@ -3192,13 +3247,13 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@wordpress/jest-preset-default@7.1.3(@babel/core@7.23.3)(jest@26.6.3)(react-dom@17.0.2)(react@17.0.2):
+  /@wordpress/jest-preset-default@7.1.3(@babel/core@7.23.3)(jest@26.6.3)(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-rz9V/YRr3TjLdZJQu7DAZHo848PpZ4N5ThtP4Lujy1O/UtcvtKF0r34SZTNDlFQO/G1USZQX/WL6HRhgl57iHA==}
     engines: {node: '>=12'}
     peerDependencies:
       jest: '>=26'
     dependencies:
-      '@wojtekmaj/enzyme-adapter-react-17': 0.6.7(enzyme@3.11.0)(react-dom@17.0.2)(react@17.0.2)
+      '@wojtekmaj/enzyme-adapter-react-17': 0.6.7(enzyme@3.11.0)(react-dom@17.0.2)(react@18.2.0)
       '@wordpress/jest-console': 4.1.1(jest@26.6.3)
       babel-jest: 26.6.3(@babel/core@7.23.3)
       enzyme: 3.11.0
@@ -3211,17 +3266,17 @@ packages:
       - supports-color
     dev: true
 
-  /@wordpress/keyboard-shortcuts@3.20.0(react@17.0.2):
+  /@wordpress/keyboard-shortcuts@3.20.0(react@18.2.0):
     resolution: {integrity: sha512-78JTtqw6CGm9aMrZmRjvlQ8+skK/8ZV2rNd58ZpWT9Htp5jEB5ddt34P5wn04UiDOFFd13sy5HOqhsUFHh4qFA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^17.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@wordpress/data': 7.6.0(react@17.0.2)
+      '@wordpress/data': 7.6.0(react@18.2.0)
       '@wordpress/element': 4.20.0
       '@wordpress/keycodes': 3.45.0
-      react: 17.0.2
+      react: 18.2.0
       rememo: 4.0.2
     dev: false
 
@@ -3234,13 +3289,13 @@ packages:
       change-case: 4.1.2
     dev: false
 
-  /@wordpress/notices@3.31.0(react@17.0.2):
+  /@wordpress/notices@3.31.0(react@18.2.0):
     resolution: {integrity: sha512-9WyaFaSr/vQc1K7cZLyPw1xBKqWfjpAKMJzWMzHYjwk1ldibhBWVLukicuolD6Y+9l+97IZHCoESBQwUeFo79Q==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/runtime': 7.23.2
       '@wordpress/a11y': 3.45.0
-      '@wordpress/data': 9.15.0(react@17.0.2)
+      '@wordpress/data': 9.15.0(react@18.2.0)
     transitivePeerDependencies:
       - react
     dev: false
@@ -3307,7 +3362,7 @@ packages:
       rungen: 0.3.2
     dev: false
 
-  /@wordpress/rich-text@5.20.0(react@17.0.2):
+  /@wordpress/rich-text@5.20.0(react@18.2.0):
     resolution: {integrity: sha512-7W4PksJ6/SnQ+KuwvZ0dlKSwbaS6ejvWBm2N8R5S79AzbdmB69BpDCz0U/GUfGDXDhrU9dpzg5NIivoW2LC8Kg==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3315,19 +3370,19 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.2
       '@wordpress/a11y': 3.45.0
-      '@wordpress/compose': 5.20.0(react@17.0.2)
-      '@wordpress/data': 7.6.0(react@17.0.2)
+      '@wordpress/compose': 5.20.0(react@18.2.0)
+      '@wordpress/data': 7.6.0(react@18.2.0)
       '@wordpress/deprecated': 3.45.0
       '@wordpress/element': 4.20.0
       '@wordpress/escape-html': 2.45.0
       '@wordpress/i18n': 4.45.0
       '@wordpress/keycodes': 3.45.0
       memize: 1.1.0
-      react: 17.0.2
+      react: 18.2.0
       rememo: 4.0.2
     dev: false
 
-  /@wordpress/scripts@19.2.2(@babel/core@7.23.3)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2):
+  /@wordpress/scripts@19.2.2(@babel/core@7.23.3)(react-dom@17.0.2)(react@18.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-cH1NVhBKScNHIHXc3Af7FBOdsZBrA72IJVcZwUx79/BJVEhPVG3B9Kn4xkXP9RtYCkWETQ+s/KodzolL9RuHmQ==}
     engines: {node: '>=12.13', npm: '>=6.9'}
     hasBin: true
@@ -3337,7 +3392,7 @@ packages:
       '@wordpress/browserslist-config': 4.1.3
       '@wordpress/dependency-extraction-webpack-plugin': 3.7.0(webpack@5.89.0)
       '@wordpress/eslint-plugin': 9.3.0(@babel/core@7.23.3)(eslint@7.32.0)(typescript@5.2.2)
-      '@wordpress/jest-preset-default': 7.1.3(@babel/core@7.23.3)(jest@26.6.3)(react-dom@17.0.2)(react@17.0.2)
+      '@wordpress/jest-preset-default': 7.1.3(@babel/core@7.23.3)(jest@26.6.3)(react-dom@17.0.2)(react@18.2.0)
       '@wordpress/npm-package-json-lint-config': 4.30.0(npm-package-json-lint@5.4.2)
       '@wordpress/postcss-plugins-preset': 3.10.0(postcss@8.4.31)
       '@wordpress/prettier-config': 1.1.1
@@ -3538,7 +3593,7 @@ packages:
       indent-string: 4.0.0
     dev: true
 
-  /airbnb-prop-types@2.16.0(react@17.0.2):
+  /airbnb-prop-types@2.16.0(react@18.2.0):
     resolution: {integrity: sha512-7WHOFolP/6cS96PhKNrslCLMYAI8yB1Pp6u6XmxozQOiZbsI5ycglZr5cHhBFfuRcQQjzCMith5ZPZdYiJCxUg==}
     peerDependencies:
       react: ^0.14 || ^15.0.0 || ^16.0.0-alpha
@@ -3551,7 +3606,7 @@ packages:
       object.entries: 1.1.7
       prop-types: 15.8.1
       prop-types-exact: 1.2.0
-      react: 17.0.2
+      react: 18.2.0
       react-is: 16.13.1
     dev: false
 
@@ -5193,7 +5248,7 @@ packages:
       no-case: 3.0.4
       tslib: 2.6.2
 
-  /downshift@6.1.12(react@17.0.2):
+  /downshift@6.1.12(react@18.2.0):
     resolution: {integrity: sha512-7XB/iaSJVS4T8wGFT3WRXmSF1UlBHAA40DshZtkrIscIN+VC+Lh363skLxFTvJwtNgHxAMDGEHT4xsyQFWL+UA==}
     peerDependencies:
       react: '>=16.12.0'
@@ -5201,7 +5256,7 @@ packages:
       '@babel/runtime': 7.23.2
       compute-scroll-into-view: 1.0.20
       prop-types: 15.8.1
-      react: 17.0.2
+      react: 18.2.0
       react-is: 17.0.2
       tslib: 2.6.2
     dev: false
@@ -6201,7 +6256,7 @@ packages:
       map-cache: 0.2.2
     dev: true
 
-  /framer-motion@6.5.1(react-dom@17.0.2)(react@17.0.2):
+  /framer-motion@6.5.1(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-o1BGqqposwi7cgDrtg0dNONhkmPsUFDaLcKXigzuTFC5x58mE8iyTazxSudFzmT6MEyJKfjjU8ItoMe3W+3fiw==}
     peerDependencies:
       react: '>=16.8 || ^17.0.0 || ^18.0.0'
@@ -6211,8 +6266,8 @@ packages:
       framesync: 6.0.1
       hey-listen: 1.0.8
       popmotion: 11.0.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
       style-value-types: 5.0.0
       tslib: 2.6.2
     optionalDependencies:
@@ -9742,17 +9797,17 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /re-resizable@6.9.11(react-dom@17.0.2)(react@17.0.2):
+  /re-resizable@6.9.11(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-a3hiLWck/NkmyLvGWUuvkAmN1VhwAz4yOhS6FdMTaxCUVN9joIWkT11wsO68coG/iEYuwn+p/7qAmfQzRhiPLQ==}
     peerDependencies:
       react: ^16.13.1 || ^17.0.0 || ^18.0.0
       react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /react-autosize-textarea@7.1.0(react-dom@17.0.2)(react@17.0.2):
+  /react-autosize-textarea@7.1.0(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-BHpjCDkuOlllZn3nLazY2F8oYO1tS2jHnWhcjTWQdcKiiMU6gHLNt/fzmqMSyerR0eTdKtfSIqtSeTtghNwS+g==}
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16.0.0
@@ -9761,21 +9816,21 @@ packages:
       autosize: 4.0.4
       line-height: 0.3.1
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /react-colorful@5.6.1(react-dom@17.0.2)(react@17.0.2):
+  /react-colorful@5.6.1(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /react-dates@21.8.0(@babel/runtime@7.23.2)(moment@2.29.4)(react-dom@17.0.2)(react-with-direction@1.4.0)(react@17.0.2):
+  /react-dates@21.8.0(@babel/runtime@7.23.2)(moment@2.29.4)(react-dom@17.0.2)(react-with-direction@1.4.0)(react@18.2.0):
     resolution: {integrity: sha512-PPriGqi30CtzZmoHiGdhlA++YPYPYGCZrhydYmXXQ6RAvAsaONcPtYgXRTLozIOrsQ5mSo40+DiA5eOFHnZ6xw==}
     peerDependencies:
       '@babel/runtime': ^7.0.0
@@ -9785,7 +9840,7 @@ packages:
       react-with-direction: ^1.3.1
     dependencies:
       '@babel/runtime': 7.23.2
-      airbnb-prop-types: 2.16.0(react@17.0.2)
+      airbnb-prop-types: 2.16.0(react@18.2.0)
       consolidated-events: 2.0.2
       enzyme-shallow-equal: 1.0.5
       is-touch-device: 1.0.1
@@ -9795,13 +9850,13 @@ packages:
       object.values: 1.1.7
       prop-types: 15.8.1
       raf: 3.4.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
       react-moment-proptypes: 1.8.1(moment@2.29.4)
-      react-outside-click-handler: 1.3.0(react-dom@17.0.2)(react@17.0.2)
-      react-portal: 4.2.2(react-dom@17.0.2)(react@17.0.2)
-      react-with-direction: 1.4.0(react-dom@17.0.2)(react@17.0.2)
-      react-with-styles: 4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@17.0.2)
+      react-outside-click-handler: 1.3.0(react-dom@17.0.2)(react@18.2.0)
+      react-portal: 4.2.2(react-dom@17.0.2)(react@18.2.0)
+      react-with-direction: 1.4.0(react-dom@17.0.2)(react@18.2.0)
+      react-with-styles: 4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@18.2.0)
       react-with-styles-interface-css: 6.0.0(@babel/runtime@7.23.2)(react-with-styles@4.2.0)
     dev: false
 
@@ -9815,6 +9870,16 @@ packages:
       react: 17.0.2
       scheduler: 0.20.2
 
+  /react-dom@17.0.2(react@18.2.0):
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
+    peerDependencies:
+      react: 17.0.2
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 18.2.0
+      scheduler: 0.20.2
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -9825,15 +9890,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-easy-crop@3.5.3(react-dom@17.0.2)(react@17.0.2):
+  /react-easy-crop@3.5.3(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-ApTbh+lzKAvKqYW81ihd5J6ZTNN3vPDwi6ncFuUrHPI4bko2DlYOESkRm+0NYoW0H8YLaD7bxox+Z3EvIzAbUA==}
     peerDependencies:
       react: '>=16.4.0'
       react-dom: '>=16.4.0'
     dependencies:
       normalize-wheel: 1.0.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
       tslib: 2.0.1
     dev: false
 
@@ -9851,61 +9916,61 @@ packages:
       moment: 2.29.4
     dev: false
 
-  /react-outside-click-handler@1.3.0(react-dom@17.0.2)(react@17.0.2):
+  /react-outside-click-handler@1.3.0(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-Te/7zFU0oHpAnctl//pP3hEAeobfeHMyygHB8MnjP6sX5OR8KHT1G3jmLsV3U9RnIYo+Yn+peJYWu+D5tUS8qQ==}
     peerDependencies:
       react: ^0.14 || >=15
       react-dom: ^0.14 || >=15
     dependencies:
-      airbnb-prop-types: 2.16.0(react@17.0.2)
+      airbnb-prop-types: 2.16.0(react@18.2.0)
       consolidated-events: 2.0.2
       document.contains: 1.0.2
       object.values: 1.1.7
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /react-portal@4.2.2(react-dom@17.0.2)(react@17.0.2):
+  /react-portal@4.2.2(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-vS18idTmevQxyQpnde0Td6ZcUlv+pD8GTyR42n3CHUQq9OHi1C4jDE4ZWEbEsrbrLRhSECYiao58cvocwMtP7Q==}
     peerDependencies:
       react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
       react-dom: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
     dependencies:
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /react-shallow-renderer@16.15.0(react@17.0.2):
+  /react-shallow-renderer@16.15.0(react@18.2.0):
     resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
       object-assign: 4.1.1
-      react: 17.0.2
+      react: 18.2.0
       react-is: 17.0.2
     dev: true
 
-  /react-test-renderer@17.0.2(react@17.0.2):
+  /react-test-renderer@17.0.2(react@18.2.0):
     resolution: {integrity: sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ==}
     peerDependencies:
       react: 17.0.2
     dependencies:
       object-assign: 4.1.1
-      react: 17.0.2
+      react: 18.2.0
       react-is: 17.0.2
-      react-shallow-renderer: 16.15.0(react@17.0.2)
+      react-shallow-renderer: 16.15.0(react@18.2.0)
       scheduler: 0.20.2
     dev: true
 
-  /react-with-direction@1.4.0(react-dom@17.0.2)(react@17.0.2):
+  /react-with-direction@1.4.0(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-ybHNPiAmaJpoWwugwqry9Hd1Irl2hnNXlo/2SXQBwbLn/jGMauMS2y9jw+ydyX5V9ICryCqObNSthNt5R94xpg==}
     peerDependencies:
       react: ^0.14 || ^15 || ^16
       react-dom: ^0.14 || ^15 || ^16
     dependencies:
-      airbnb-prop-types: 2.16.0(react@17.0.2)
+      airbnb-prop-types: 2.16.0(react@18.2.0)
       brcast: 2.0.2
       deepmerge: 1.5.2
       direction: 1.0.4
@@ -9913,8 +9978,8 @@ packages:
       object.assign: 4.1.4
       object.values: 1.1.7
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
   /react-with-styles-interface-css@6.0.0(@babel/runtime@7.23.2)(react-with-styles@4.2.0):
@@ -9926,10 +9991,10 @@ packages:
       '@babel/runtime': 7.23.2
       array.prototype.flat: 1.3.2
       global-cache: 1.2.1
-      react-with-styles: 4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@17.0.2)
+      react-with-styles: 4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@18.2.0)
     dev: false
 
-  /react-with-styles@4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@17.0.2):
+  /react-with-styles@4.2.0(@babel/runtime@7.23.2)(react-with-direction@1.4.0)(react@18.2.0):
     resolution: {integrity: sha512-tZCTY27KriRNhwHIbg1NkSdTTOSfXDg6Z7s+Q37mtz0Ym7Sc7IOr3PzVt4qJhJMW6Nkvfi3g34FuhtiGAJCBQA==}
     peerDependencies:
       '@babel/runtime': ^7.0.0
@@ -9937,12 +10002,12 @@ packages:
       react-with-direction: ^1.3.1
     dependencies:
       '@babel/runtime': 7.23.2
-      airbnb-prop-types: 2.16.0(react@17.0.2)
+      airbnb-prop-types: 2.16.0(react@18.2.0)
       hoist-non-react-statics: 3.3.2
       object.assign: 4.1.4
       prop-types: 15.8.1
-      react: 17.0.2
-      react-with-direction: 1.4.0(react-dom@17.0.2)(react@17.0.2)
+      react: 18.2.0
+      react-with-direction: 1.4.0(react-dom@17.0.2)(react@18.2.0)
     dev: false
 
   /react@17.0.2:
@@ -9957,7 +10022,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-pkg-up@1.0.1:
     resolution: {integrity: sha512-WD9MTlNtI55IwYUS27iHh9tK3YoIVhxis8yKhLpTqWtml739uXc9NWTpxoHkfZf3+DkCCsXox94/VWZniuZm6A==}
@@ -10011,39 +10075,39 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /reakit-system@0.15.2(react-dom@17.0.2)(react@17.0.2):
+  /reakit-system@0.15.2(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-TvRthEz0DmD0rcJkGamMYx+bATwnGNWJpe/lc8UV2Js8nnPvkaxrHk5fX9cVASFrWbaIyegZHCWUBfxr30bmmA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
     dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      reakit-utils: 0.15.2(react-dom@17.0.2)(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
+      reakit-utils: 0.15.2(react-dom@17.0.2)(react@18.2.0)
     dev: false
 
-  /reakit-utils@0.15.2(react-dom@17.0.2)(react@17.0.2):
+  /reakit-utils@0.15.2(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-i/RYkq+W6hvfFmXw5QW7zvfJJT/K8a4qZ0hjA79T61JAFPGt23DsfxwyBbyK91GZrJ9HMrXFVXWMovsKBc1qEQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
     dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
     dev: false
 
-  /reakit-warning@0.6.2(react-dom@17.0.2)(react@17.0.2):
+  /reakit-warning@0.6.2(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-z/3fvuc46DJyD3nJAUOto6inz2EbSQTjvI/KBQDqxwB0y02HDyeP8IWOJxvkuAUGkWpeSx+H3QWQFSNiPcHtmw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
     dependencies:
-      react: 17.0.2
-      reakit-utils: 0.15.2(react-dom@17.0.2)(react@17.0.2)
+      react: 18.2.0
+      reakit-utils: 0.15.2(react-dom@17.0.2)(react@18.2.0)
     transitivePeerDependencies:
       - react-dom
     dev: false
 
-  /reakit@1.3.11(react-dom@17.0.2)(react@17.0.2):
+  /reakit@1.3.11(react-dom@17.0.2)(react@18.2.0):
     resolution: {integrity: sha512-mYxw2z0fsJNOQKAEn5FJCPTU3rcrY33YZ/HzoWqZX0G7FwySp1wkCYW79WhuYMNIUFQ8s3Baob1RtsEywmZSig==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
@@ -10051,11 +10115,11 @@ packages:
     dependencies:
       '@popperjs/core': 2.11.8
       body-scroll-lock: 3.1.5
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      reakit-system: 0.15.2(react-dom@17.0.2)(react@17.0.2)
-      reakit-utils: 0.15.2(react-dom@17.0.2)(react@17.0.2)
-      reakit-warning: 0.6.2(react-dom@17.0.2)(react@17.0.2)
+      react: 18.2.0
+      react-dom: 17.0.2(react@18.2.0)
+      reakit-system: 0.15.2(react-dom@17.0.2)(react@18.2.0)
+      reakit-utils: 0.15.2(react-dom@17.0.2)(react@18.2.0)
+      reakit-warning: 0.6.2(react-dom@17.0.2)(react@18.2.0)
     dev: false
 
   /rechoir@0.7.1:
@@ -11711,7 +11775,7 @@ packages:
       requires-port: 1.0.0
     dev: true
 
-  /use-isomorphic-layout-effect@1.1.2(react@17.0.2):
+  /use-isomorphic-layout-effect@1.1.2(react@18.2.0):
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
       '@types/react': '*'
@@ -11720,15 +11784,15 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
-  /use-memo-one@1.1.3(react@17.0.2):
+  /use-memo-one@1.1.3(react@18.2.0):
     resolution: {integrity: sha512-g66/K7ZQGYrI6dy8GLpVcMsBp4s17xNkYJVSMvTEevGy3nDxHOfE6z8BVE22+5G5x7t3+bhzrlTDB7ObrEE0cQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      react: 17.0.2
+      react: 18.2.0
     dev: false
 
   /use@3.1.1:

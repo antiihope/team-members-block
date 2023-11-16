@@ -21,6 +21,20 @@ import {
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useEffect, useState, useRef } from '@wordpress/element';
+
+import {
+	DndContext,
+	useSensors,
+	useSensor,
+	PointerSensor,
+} from '@dnd-kit/core';
+import {
+	SortableContext,
+	horizontalListSortingStrategy,
+	arrayMove,
+} from '@dnd-kit/sortable';
+import SortableItem from './sortable-item';
+
 // https://source.unsplash.com/550x550/?portrait
 function Edit( {
 	attributes,
@@ -33,6 +47,13 @@ function Edit( {
 	const [ blobURL, setBlobURL ] = useState( '' );
 	const [ selectedLink, setSelectedLink ] = useState( '' );
 	const titleRef = useRef();
+	const sensors = useSensors(
+		useSensor( PointerSensor, {
+			activationConstraint: {
+				distance: 5,
+			},
+		} )
+	);
 
 	const imageObject = useSelect(
 		( select ) => {
@@ -101,6 +122,10 @@ function Edit( {
 		setAttributes( { url: undefined, id: undefined, alt: undefined } );
 	};
 
+	const onChangeAlt = ( alt ) => {
+		setAttributes( { alt } );
+	};
+
 	const addNewSocialLink = () => {
 		const newSocialLinks = [ ...socialLinks ];
 		newSocialLinks.push( {
@@ -112,8 +137,37 @@ function Edit( {
 		setSelectedLink( socialLinks.length );
 	};
 
-	const onChangeAlt = ( alt ) => {
-		setAttributes( { alt } );
+	const updateSocialItem = ( type, value ) => {
+		const newSocialLinks = [ ...socialLinks ];
+		newSocialLinks[ selectedLink ][ type ] = value;
+		setAttributes( { socialLinks: newSocialLinks } );
+	};
+
+	const removeSocialLink = () => {
+		setAttributes( {
+			socialLinks: socialLinks.filter(
+				( item, index ) => index !== selectedLink
+			),
+		} );
+		setSelectedLink( '' );
+	};
+
+	const handeDragEnd = ( event ) => {
+		const { active, over } = event;
+		if ( active.id === over.id ) {
+			return;
+		}
+		if ( active && over ) {
+			const oldIndex = socialLinks.findIndex(
+				( item ) => `${ item.icon }-${ item.link }` === active.id
+			);
+			const newIndex = socialLinks.findIndex(
+				( item ) => `${ item.icon }-${ item.link }` === over.id
+			);
+			const newSocialLinks = arrayMove( socialLinks, oldIndex, newIndex );
+			setAttributes( { socialLinks: newSocialLinks } );
+			setSelectedLink( newIndex );
+		}
 	};
 
 	useEffect( () => {
@@ -206,7 +260,31 @@ function Edit( {
 				/>
 				<div className="wp-block-block-course-team-member-social-links">
 					<ul>
-						{ socialLinks.map( ( item, index ) => {
+						<DndContext
+							sensors={ sensors }
+							onDragEnd={ handeDragEnd }
+						>
+							<SortableContext
+								items={ socialLinks.map(
+									( item ) => `${ item.icon }-${ item.link }`
+								) }
+								strategy={ horizontalListSortingStrategy }
+							>
+								{ socialLinks.map( ( item, index ) => {
+									return (
+										<SortableItem
+											key={ `${ item.icon }-${ item.link }` }
+											id={ `${ item.icon }-${ item.link }` }
+											index={ index }
+											selectedLink={ selectedLink }
+											setSelectedLink={ setSelectedLink }
+											icon={ item.icon }
+										/>
+									);
+								} ) }
+							</SortableContext>
+						</DndContext>
+						{ /* { socialLinks.map( ( item, index ) => {
 							return (
 								<li
 									data-icon={ item.icon }
@@ -226,7 +304,7 @@ function Edit( {
 									</button>
 								</li>
 							);
-						} ) }
+						} ) } */ }
 						{ isSelected && (
 							<li className="wp-block-block-course-team-member-add-icon-li">
 								<Tooltip text="Add Social Link">
@@ -243,10 +321,24 @@ function Edit( {
 				</div>
 				{ selectedLink !== '' && (
 					<div className="wp-block-block-course-team-member-link-form">
-						<TextControl label="Icon" />
-						<TextControl label="URL" />
+						<TextControl
+							label="Icon"
+							value={ socialLinks[ selectedLink ].icon }
+							onChange={ ( value ) =>
+								updateSocialItem( 'icon', value )
+							}
+						/>
+						<TextControl
+							label="URL"
+							value={ socialLinks[ selectedLink ].link }
+							onChange={ ( value ) =>
+								updateSocialItem( 'link', value )
+							}
+						/>
 						<br />
-						<Button isDestructive>Remove Link</Button>
+						<Button isDestructive onClick={ removeSocialLink }>
+							Remove Link
+						</Button>
 					</div>
 				) }
 			</div>
